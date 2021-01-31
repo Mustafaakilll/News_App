@@ -9,40 +9,6 @@ import 'widgets/news_list_builder.dart';
 
 class NewsPage extends StatelessWidget {
   final NavigationService _navigator = NavigationService();
-  static List<String> categoryUrls = [
-    "bilim-teknoloji",
-    "spor",
-    "ekonomi",
-    "saglik",
-    "cevre",
-    "yasam",
-    "soylesi",
-    "sosyal-guvenlik",
-    "medya",
-    "magazin",
-    "kultur-sanat",
-    "egitim",
-    "dunya",
-    "koronavirus",
-    "gundem"
-  ];
-  static List<String> categoryNames = [
-    "Teknoloji",
-    "Spor",
-    "Ekonomi",
-    "Sağlık",
-    "Çevre",
-    "Yaşam",
-    "Söyleşi",
-    "Sosyal Güvenlik",
-    "Medya",
-    "Magazin",
-    "Kültür Sanat",
-    "Eğitim",
-    "Dünya",
-    "KoronaVirüs",
-    "Gündem"
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -68,10 +34,9 @@ class NewsPage extends StatelessWidget {
 
   Widget _body() => Consumer<NewsState>(
         builder: (BuildContext context, model, Widget child) {
-          if (model.isLoading == true) {
-            return Center(child: CircularProgressIndicator());
-          }
-          if (model.news.items.length == 0) {
+          if (model.isLoading) return Center(child: CircularProgressIndicator());
+
+          if (model.news.length == 0) {
             return Text("No Data");
           }
 

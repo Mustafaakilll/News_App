@@ -5,38 +5,20 @@ class CategoryField extends StatelessWidget {
   const CategoryField({Key key, this.model}) : super(key: key);
   final NewsState model;
   static List<String> categoryUrls = [
-    "bilim-teknoloji",
-    "spor",
-    "ekonomi",
-    "saglik",
-    "cevre",
-    "yasam",
-    "soylesi",
-    "sosyal-guvenlik",
-    "medya",
-    "magazin",
-    "kultur-sanat",
-    "egitim",
-    "dunya",
-    "koronavirus",
-    "gundem"
+    "technology",
+    "sports",
+    "business",
+    "health",
+    "entertainment",
+    "science",
   ];
   static List<String> categoryNames = [
     "Teknoloji",
     "Spor",
     "Ekonomi",
     "Sağlık",
-    "Çevre",
-    "Yaşam",
-    "Söyleşi",
-    "Sosyal Güvenlik",
-    "Medya",
-    "Magazin",
-    "Kültür Sanat",
-    "Eğitim",
-    "Dünya",
-    "KoronaVirüs",
-    "Gündem"
+    "Eğlence",
+    "Bilim"
   ];
 
   @override

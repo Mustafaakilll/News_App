@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import 'states/news_state.dart';
 import 'package:path_provider/path_provider.dart' as pathProvider;
 
+import 'view/news_page.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -17,7 +19,6 @@ void main() async {
 
   final settings = await Hive.openBox("theme");
   bool isLightTheme = settings.get("isLightTheme") ?? true;
-  print(isLightTheme);
 
   runApp(
     MultiProvider(
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: Provider.of<ThemeState>(context).themeData(),
-      home: MainPage(),
+      home: NewsPage(),
     );
   }
 }

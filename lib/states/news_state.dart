@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_demo/data/http.dart';
-import 'package:webfeed/domain/rss_feed.dart';
+import 'package:news_demo/model/news_article.dart';
 
 class NewsState extends ChangeNotifier {
   HttpService _service = HttpService();
@@ -8,8 +8,8 @@ class NewsState extends ChangeNotifier {
   bool _isLoading = true;
   bool get isLoading => _isLoading;
 
-  RssFeed _news;
-  RssFeed get news => _news;
+  List<NewsArticle> _news;
+  List<NewsArticle> get news => _news;
 
   Future<void> getAllRss() async {
     _isLoading = true;
