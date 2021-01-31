@@ -1,6 +1,6 @@
 # news_demo
 
-A new Flutter project.
+A new Flutter project. You have be Flutter beta channel for new features. 
 
 ## Getting Started
 
