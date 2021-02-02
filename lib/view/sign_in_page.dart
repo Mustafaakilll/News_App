@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:news_demo/states/auth_state.dart';
-import 'package:news_demo/states/sncakbar_message_state.dart';
-import 'package:news_demo/states/validation_state.dart';
 import 'package:provider/provider.dart';
 
+import '../states/auth_state.dart';
+import '../states/sncakbar_message_state.dart';
+import '../states/validation_state.dart';
 import 'widgets/form_field.dart';
 
 class SignInPage extends StatefulWidget {
@@ -75,13 +75,6 @@ class _SignInPageState extends State<SignInPage> {
         validator: (password) => _validator.validatePassword(password),
       );
 
-  Widget signInWithGoogleButton(BuildContext context) => SignInButton(
-        Buttons.GoogleDark,
-        onPressed: () async {
-          await _auth.signInWithGoogle(context);
-        },
-      );
-
   Widget _buildSignInButton(context) => SignInButtonBuilder(
         backgroundColor: Colors.grey[600],
         onPressed: () async {
@@ -95,5 +88,13 @@ class _SignInPageState extends State<SignInPage> {
         },
         text: "Giriş Yap",
         icon: Icons.email,
+      );
+
+  Widget signInWithGoogleButton(BuildContext context) => SignInButton(
+        Buttons.GoogleDark,
+        text: "Google ile Giriş Yap",
+        onPressed: () async {
+          await _auth.signInWithGoogle(context);
+        },
       );
 }

@@ -1,9 +1,6 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
-import 'package:news_demo/model/news_article.dart';
+
+import '../model/news_article.dart';
 
 class HttpService {
   var dio = Dio();

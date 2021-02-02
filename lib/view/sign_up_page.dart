@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
-import 'package:news_demo/states/auth_state.dart';
-import 'package:news_demo/states/validation_state.dart';
+import 'package:flutter_signin_button/button_list.dart';
+import 'package:flutter_signin_button/button_view.dart';
 
+import '../states/auth_state.dart';
+import '../states/validation_state.dart';
 import 'widgets/form_field.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -27,12 +29,19 @@ class _SignUpPageState extends State<SignUpPage> {
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _emailField,
-            _emptyHeight,
-            _passwordField,
-            _emptyHeight,
-            buildSignUpButtonBuilder(context),
+            Flex(
+              direction: Axis.vertical,
+              children: [
+                _emailField,
+                _emptyHeight,
+                _passwordField,
+                _emptyHeight,
+                buildSignUpButtonBuilder(context),
+              ],
+            ),
+            signInWithGoogleButton(context)
           ],
         ),
       ),
@@ -69,6 +78,14 @@ class _SignUpPageState extends State<SignUpPage> {
           if (_emailKey.currentState.validate() && _passKey.currentState.validate()) {
             _auth.newRegister(context, _emailController.text, _passController.text);
           } else {}
+        },
+      );
+
+  Widget signInWithGoogleButton(BuildContext context) => SignInButton(
+        Buttons.GoogleDark,
+        text: "Google ile Giriş Yap",
+        onPressed: () async {
+          await _auth.signInWithGoogle(context);
         },
       );
 }

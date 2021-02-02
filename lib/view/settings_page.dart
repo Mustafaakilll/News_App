@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
-import 'package:news_demo/service/navigation_service.dart';
-import 'package:news_demo/states/auth_state.dart';
-import 'package:news_demo/states/theme_state.dart';
-import 'package:news_demo/view/developer_info_page.dart';
-import 'package:news_demo/view/main_page.dart';
+import '../service/navigation_service.dart';
+import '../states/auth_state.dart';
+import '../states/theme_state.dart';
+import 'developer_info_page.dart';
+import 'main_page.dart';
 import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable

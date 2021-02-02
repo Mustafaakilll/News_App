@@ -1,4 +1,4 @@
-import 'package:news_demo/service/validation_service.dart';
+import '../service/validation_service.dart';
 
 class ValidationState {
   ValidationService _validator = ValidationService();

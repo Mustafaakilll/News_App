@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
-import 'package:news_demo/service/navigation_service.dart';
 
+import '../service/navigation_service.dart';
 import 'sign_in_page.dart';
 import 'sign_up_page.dart';
 

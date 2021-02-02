@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:news_demo/service/navigation_service.dart';
-import 'package:news_demo/states/news_state.dart';
+import '../service/navigation_service.dart';
+import '../states/news_state.dart';
 import 'package:provider/provider.dart';
 
 import 'settings_page.dart';
@@ -9,19 +9,48 @@ import 'widgets/news_list_builder.dart';
 
 class NewsPage extends StatelessWidget {
   final NavigationService _navigator = NavigationService();
+  TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: _appBar(context),
-      body: _body(),
+    return Consumer<NewsState>(
+      builder: (BuildContext context, model, Widget child) {
+        return Scaffold(
+          appBar: model.isSearch ? _searchAppBar(context, model) : _normalAppBar(context, model),
+          body: _body(model),
+        );
+      },
     );
   }
 
-  Widget _appBar(BuildContext context) => AppBar(
+  Widget _normalAppBar(BuildContext context, NewsState model) => AppBar(
         title: Text("Haberler"),
         actions: [
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                model.changeSearchState();
+              }),
           settingsIconButton(context),
+        ],
+      );
+
+  Widget _searchAppBar(BuildContext context, NewsState model) => AppBar(
+        title: TextFormField(controller: _controller),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                model.changeKeyWord(_controller.text);
+                _controller.clear();
+              }),
+          IconButton(
+            icon: Icon(Icons.close),
+            onPressed: () {
+              model.changeSearchState();
+              model.filteredNews.clear();
+            },
+          ),
         ],
       );
 
@@ -32,21 +61,12 @@ class NewsPage extends StatelessWidget {
         },
       );
 
-  Widget _body() => Consumer<NewsState>(
-        builder: (BuildContext context, model, Widget child) {
-          if (model.isLoading) return Center(child: CircularProgressIndicator());
-
-          if (model.news.length == 0) {
-            return Text("No Data");
-          }
-
-          return Column(
-            children: [
-              CategoryField(model: model),
-              Expanded(child: NewsListViewBuilder(model: model)),
-            ],
-          );
-        },
+  Widget _body(model) => Column(
+        children: [
+          CategoryField(model: model),
+          Expanded(child: NewsListViewBuilder(model: model)),
+        ],
       );
+
   SizedBox emptyWidth() => SizedBox(width: 12);
 }

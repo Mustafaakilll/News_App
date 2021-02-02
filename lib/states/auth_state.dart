@@ -1,4 +1,4 @@
-import 'package:news_demo/service/auth_service.dart';
+import '../service/auth_service.dart';
 
 class AuthState {
   AuthService _auth = AuthService();

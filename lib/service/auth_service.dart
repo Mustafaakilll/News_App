@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:news_demo/states/sncakbar_message_state.dart';
-import 'package:news_demo/view/main_page.dart';
-import 'package:news_demo/view/news_page.dart';
-import 'package:news_demo/view/widgets/toast.dart';
-import 'package:provider/provider.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
+import '../states/sncakbar_message_state.dart';
+import '../view/main_page.dart';
+import '../view/news_page.dart';
+import '../view/widgets/toast.dart';
 import 'navigation_service.dart';
 
 class AuthService {

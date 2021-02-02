@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_demo/states/news_state.dart';
+import '../../states/news_state.dart';
 
 class CategoryField extends StatelessWidget {
   const CategoryField({Key key, this.model}) : super(key: key);

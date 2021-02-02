@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_demo/states/sncakbar_message_state.dart';
+import '../../states/sncakbar_message_state.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
