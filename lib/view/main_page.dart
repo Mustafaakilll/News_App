@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
+import 'package:news_demo/constant/constants.dart';
 
 import '../service/navigation_service.dart';
 import 'sign_in_page.dart';
@@ -21,7 +22,7 @@ class MainPage extends StatelessWidget {
               context: context,
               icon: Icons.email,
               newPage: SignInPage(),
-              text: "Giriş",
+              text: AppConstant.SIGN_IN,
             ),
             SizedBox(height: 50),
             _buttonBuilder(
@@ -29,7 +30,7 @@ class MainPage extends StatelessWidget {
               color: Colors.blue,
               icon: Icons.person_add_alt_1,
               newPage: SignUpPage(),
-              text: "Kayıt Ol",
+              text: AppConstant.SIGN_IN,
             )
           ],
         ),
@@ -37,11 +38,13 @@ class MainPage extends StatelessWidget {
     );
   }
 
-  Widget get _appBar => AppBar(
-        title: Text("Hoş Geldiniz"),
+  AppBar get _appBar => AppBar(
+        title: Text(AppConstant.WELCOME),
       );
 
-  Widget _buttonBuilder({context, newPage, color, text, icon}) => SignInButtonBuilder(
+  Widget _buttonBuilder(
+          {context, newPage, required color, required text, icon}) =>
+      SignInButtonBuilder(
         height: 50,
         onPressed: () {
           _navigator.goToNewPage(context: context, newPage: newPage);
@@ -51,5 +54,6 @@ class MainPage extends StatelessWidget {
         icon: icon,
       );
 
-  Widget space({double width = 0, double height = 0}) => SizedBox(width: width, height: height);
+  Widget space({double width = 0, double height = 0}) =>
+      SizedBox(width: width, height: height);
 }

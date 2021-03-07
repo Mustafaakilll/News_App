@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class ShowFlutterToast {
-  void showInfoToast({BuildContext context}) {
+  void showInfoToast({required BuildContext context}) {
     final toastMessage = Provider.of<ToastMessage>(context).message;
     Fluttertoast.showToast(
       msg: toastMessage,

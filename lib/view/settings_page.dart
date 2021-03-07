@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
+import 'package:news_demo/constant/constants.dart';
 import '../service/navigation_service.dart';
 import '../states/auth_state.dart';
 import '../states/theme_state.dart';
@@ -10,7 +11,7 @@ import 'package:provider/provider.dart';
 // ignore: must_be_immutable
 class SettingsPage extends StatelessWidget {
   final NavigationService _navigator = NavigationService();
-  AuthState _auth = AuthState();
+  final AuthState _auth = AuthState();
 
   @override
   Widget build(BuildContext context) {
@@ -34,25 +35,24 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Widget _appBar() => AppBar(
-        title: Text("Ayarlar"),
+  AppBar _appBar() => AppBar(
+        title: Text(AppConstant.SETTINGS),
       );
 
-  Widget developerInfoButton(BuildContext context) => RaisedButton(
-        color: Theme.of(context).buttonTheme.colorScheme.primary,
-        child: Text(
-          "Geliştirici Hakkında",
-          style: TextStyle(color: Colors.white),
-        ),
+  Widget developerInfoButton(BuildContext context) => ElevatedButton(
         onPressed: () {
           _navigator.goToNewPage(context: context, newPage: DeveloperPage());
         },
+        child: Text(
+          AppConstant.ABOUT_DEVELOPER,
+          style: TextStyle(color: Colors.white),
+        ),
       );
 
   Consumer<ThemeState> themeButton() => Consumer<ThemeState>(
-        builder: (BuildContext context, value, Widget child) {
+        builder: (BuildContext context, value, Widget? child) {
           return SwitchListTile(
-            title: Text("Açık Tema"),
+            title: Text(AppConstant.LIGHT_THEME),
             value: value.isLightTheme,
             onChanged: (val) {
               value.toggleThemeData();
@@ -63,14 +63,14 @@ class SettingsPage extends StatelessWidget {
 
   Widget logOutButton(BuildContext context) {
     return SignInButtonBuilder(
-      backgroundColor: Theme.of(context).buttonTheme.colorScheme.primary,
+      backgroundColor: Theme.of(context).buttonTheme.colorScheme!.primary,
       onPressed: () {
         _auth.logOut(context);
         _navigator.replaceNewPage(context: context, newPage: MainPage());
       },
       icon: Icons.logout,
-      text: "Çıkış Yap",
-      fontSize: Theme.of(context).textTheme.button.fontSize,
+      text: AppConstant.LOG_OUT,
+      fontSize: Theme.of(context).textTheme.button!.fontSize!,
     );
   }
 }

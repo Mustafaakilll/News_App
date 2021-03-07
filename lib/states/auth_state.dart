@@ -1,23 +1,22 @@
 import '../service/auth_service.dart';
 
 class AuthState {
-  AuthService _auth = AuthService();
+  final AuthService _auth = AuthService();
 
-  AuthService get authService => _auth;
-
-  signInWithEmailandPassword(context, email, password) async {
-    await _auth.signInWithEmailandPassword(context: context, email: email, password: password);
+  Future<void> signInWithEmailandPassword(context, email, password) async {
+    await _auth.signInWithEmailandPassword(
+        context: context, email: email, password: password);
   }
 
-  signInWithGoogle(context) async {
+  Future<void> signInWithGoogle(context) async {
     await _auth.signInGmail(context: context);
   }
 
-  newRegister(context, email, password) async {
+  Future<void> newRegister(context, email, password) async {
     await _auth.registerNew(context: context, email: email, password: password);
   }
 
-  logOut(context) async {
+  Future<void> logOut(context) async {
     await _auth.logOut(context);
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_demo/constant/constants.dart';
 import '../service/navigation_service.dart';
 import '../states/news_state.dart';
 import 'package:provider/provider.dart';
@@ -9,41 +10,32 @@ import 'widgets/news_list_builder.dart';
 
 class NewsPage extends StatelessWidget {
   final NavigationService _navigator = NavigationService();
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Consumer<NewsState>(
-      builder: (BuildContext context, model, Widget child) {
+      builder: (BuildContext context, model, Widget? child) {
         return Scaffold(
-          appBar: model.isSearch ? _searchAppBar(context, model) : _normalAppBar(context, model),
+          appBar: model.isSearch
+              ? _searchAppBar(context, model)
+              : _normalAppBar(context, model),
           body: _body(model),
         );
       },
     );
   }
 
-  Widget _normalAppBar(BuildContext context, NewsState model) => AppBar(
-        title: Text("Haberler"),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                model.changeSearchState();
-              }),
-          settingsIconButton(context),
-        ],
-      );
-
-  Widget _searchAppBar(BuildContext context, NewsState model) => AppBar(
+  AppBar _searchAppBar(BuildContext context, NewsState model) => AppBar(
         title: TextFormField(controller: _controller),
         actions: [
           IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                model.changeKeyWord(_controller.text);
-                _controller.clear();
-              }),
+            icon: Icon(Icons.search),
+            onPressed: () {
+              model.changeKeyWord(_controller.text);
+              _controller.clear();
+            },
+          ),
           IconButton(
             icon: Icon(Icons.close),
             onPressed: () {
@@ -51,6 +43,18 @@ class NewsPage extends StatelessWidget {
               model.filteredNews.clear();
             },
           ),
+        ],
+      );
+
+  AppBar _normalAppBar(BuildContext context, NewsState model) => AppBar(
+        title: Text(AppConstant.NEWS),
+        actions: [
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                model.changeSearchState();
+              }),
+          settingsIconButton(context),
         ],
       );
 

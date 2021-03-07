@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class BuildFormField extends StatelessWidget {
   const BuildFormField({
-    Key key,
+    Key? key,
     this.validator,
     this.label,
     this.controller,

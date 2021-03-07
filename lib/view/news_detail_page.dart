@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_share/flutter_share.dart';
+import 'package:share/share.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class NewsDetailPage extends StatelessWidget {
-  const NewsDetailPage({Key key, this.url}) : super(key: key);
+  const NewsDetailPage({Key? key, required this.url, required this.news_title})
+      : super(key: key);
   final url;
+  final String news_title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(appBar: _appbar, body: _body());
   }
 
-  Widget get _appbar => AppBar(
+  AppBar get _appbar => AppBar(
+        title: Text(
+          news_title,
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
         actions: [
           _shareIcon,
         ],
@@ -28,11 +35,8 @@ class NewsDetailPage extends StatelessWidget {
       );
 
   Future<void> _share() async {
-    final title = "Deneme";
+    final title = 'Deneme';
 
-    await FlutterShare.share(
-      linkUrl: url,
-      title: title,
-    );
+    await Share.share(title);
   }
 }

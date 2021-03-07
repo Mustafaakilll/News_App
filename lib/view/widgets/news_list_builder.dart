@@ -1,36 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:news_demo/constant/constants.dart';
 
 import '../../model/news_article.dart';
 import '../../service/navigation_service.dart';
 import '../../states/news_state.dart';
 import '../news_detail_page.dart';
 
-class NewsListViewBuilder extends StatelessWidget {
-  const NewsListViewBuilder({Key key, this.model}) : super(key: key);
+class NewsListViewBuilder extends StatefulWidget {
+  const NewsListViewBuilder({Key? key, required this.model}) : super(key: key);
   final NewsState model;
-  static NavigationService _navigator = NavigationService();
+
+  @override
+  _NewsListViewBuilderState createState() => _NewsListViewBuilderState();
+}
+
+class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
+  final NavigationService _navigator = NavigationService();
 
   @override
   Widget build(BuildContext context) {
-    if (model.isLoading) return Center(child: CircularProgressIndicator());
+    if (widget.model.isLoading) Center(child: CircularProgressIndicator());
 
-    if (model.news.length == 0) {
-      return Text("No Data");
-    }
+    if (widget.model.news.isEmpty) Center(child: Text(AppConstant.NO_DATA));
 
-    if (model.isSearch) {
+    if (widget.model.isSearch) {
       return ListView.builder(
-        itemCount: model.filteredNews.length,
+        itemCount: widget.model.filteredNews.length,
         itemBuilder: (BuildContext context, int index) {
-          final _filteredNews = model.filteredNews[index];
+          final _filteredNews = widget.model.filteredNews[index];
           return _touchNews(context, _filteredNews);
         },
       );
     } else {
       return ListView.builder(
-        itemCount: model.news.length,
+        itemCount: widget.model.news.length,
         itemBuilder: (BuildContext context, int index) {
-          final news = model.news[index];
+          final news = widget.model.news[index];
           return _touchNews(context, news);
         },
       );
@@ -48,9 +53,9 @@ class NewsListViewBuilder extends StatelessWidget {
     return Card(
       child: Row(
         children: [
-          _newsImage(news.urlToImage ?? "https://via.placeholder.com/150x100"),
+          _newsImage(news.urlToImage ?? AppConstant.PLACEHOLDER_URL),
           SizedBox(width: 10),
-          _newsTitle(news.title),
+          _newsTitle(news.title!),
           IconButton(
             icon: Icon(Icons.keyboard_arrow_right),
             onPressed: () => _goNewsDetail(context, news),
@@ -60,14 +65,14 @@ class NewsListViewBuilder extends StatelessWidget {
     );
   }
 
-  _newsImage(String url) => Image(
+  Widget _newsImage(String url) => Image(
         fit: BoxFit.cover,
         height: 100,
         width: 150,
         image: NetworkImage(url),
       );
 
-  _newsTitle(String title) => Expanded(
+  Widget _newsTitle(String title) => Expanded(
         child: Text(
           title,
           overflow: TextOverflow.ellipsis,
@@ -75,7 +80,12 @@ class NewsListViewBuilder extends StatelessWidget {
         ),
       );
 
-  _goNewsDetail(final context, NewsArticle news) {
-    return _navigator.goToNewPage(context: context, newPage: NewsDetailPage(url: news.url));
+  dynamic _goNewsDetail(final context, NewsArticle news) {
+    return _navigator.goToNewPage(
+        context: context,
+        newPage: NewsDetailPage(
+          url: news.url,
+          news_title: news.title!,
+        ));
   }
 }

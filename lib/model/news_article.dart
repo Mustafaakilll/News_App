@@ -1,11 +1,11 @@
 class NewsArticle {
-  String author;
-  String title;
-  String description;
-  String url;
-  String urlToImage;
-  String publishedAt;
-  String content;
+  late String? author;
+  late String? title;
+  late String? description;
+  late String? url;
+  late String? urlToImage;
+  late String? publishedAt;
+  late String? content;
 
   NewsArticle(
       {this.author,
@@ -27,14 +27,14 @@ class NewsArticle {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['author'] = this.author;
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['url'] = this.url;
-    data['urlToImage'] = this.urlToImage;
-    data['publishedAt'] = this.publishedAt;
-    data['content'] = this.content;
+    final data = <String, dynamic>{};
+    data['author'] = author;
+    data['title'] = title;
+    data['description'] = description;
+    data['url'] = url;
+    data['urlToImage'] = urlToImage;
+    data['publishedAt'] = publishedAt;
+    data['content'] = content;
     return data;
   }
 }

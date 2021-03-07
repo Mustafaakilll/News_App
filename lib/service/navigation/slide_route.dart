@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SlideRightRoute extends PageRouteBuilder {
-  final Widget page;
+  final Widget? page;
 
-  SlideRightRoute({RouteSettings settings, this.page})
+  SlideRightRoute({RouteSettings? settings, this.page})
       : super(
           settings: settings,
           pageBuilder: (
@@ -11,7 +11,7 @@ class SlideRightRoute extends PageRouteBuilder {
             Animation<double> animation,
             Animation<double> secondaryAnimation,
           ) =>
-              page,
+              page!,
           transitionsBuilder: (
             BuildContext context,
             Animation<double> animation,
@@ -29,8 +29,8 @@ class SlideRightRoute extends PageRouteBuilder {
 }
 
 class SlideLeftRoute extends PageRouteBuilder {
-  final Widget page;
-  SlideLeftRoute({RouteSettings settings, this.page})
+  final Widget? page;
+  SlideLeftRoute({RouteSettings? settings, this.page})
       : super(
           settings: settings,
           pageBuilder: (
@@ -38,7 +38,7 @@ class SlideLeftRoute extends PageRouteBuilder {
             Animation<double> animation,
             Animation<double> secondaryAnimation,
           ) =>
-              page,
+              page!,
           transitionsBuilder: (
             BuildContext context,
             Animation<double> animation,
@@ -56,8 +56,8 @@ class SlideLeftRoute extends PageRouteBuilder {
 }
 
 class SlideTopRoute extends PageRouteBuilder {
-  final Widget page;
-  SlideTopRoute({RouteSettings settings, this.page})
+  final Widget? page;
+  SlideTopRoute({RouteSettings? settings, this.page})
       : super(
           settings: settings,
           pageBuilder: (
@@ -65,7 +65,7 @@ class SlideTopRoute extends PageRouteBuilder {
             Animation<double> animation,
             Animation<double> secondaryAnimation,
           ) =>
-              page,
+              page!,
           transitionsBuilder: (
             BuildContext context,
             Animation<double> animation,
@@ -83,8 +83,8 @@ class SlideTopRoute extends PageRouteBuilder {
 }
 
 class SlideBottomRoute extends PageRouteBuilder {
-  final Widget page;
-  SlideBottomRoute({RouteSettings settings, this.page})
+  final Widget? page;
+  SlideBottomRoute({RouteSettings? settings, this.page})
       : super(
           settings: settings,
           pageBuilder: (
@@ -92,7 +92,7 @@ class SlideBottomRoute extends PageRouteBuilder {
             Animation<double> animation,
             Animation<double> secondaryAnimation,
           ) =>
-              page,
+              page!,
           transitionsBuilder: (
             BuildContext context,
             Animation<double> animation,

@@ -3,11 +3,11 @@ import 'package:hive/hive.dart';
 
 class ThemeState with ChangeNotifier {
   bool isLightTheme;
-  ThemeState({this.isLightTheme});
+  ThemeState({required this.isLightTheme});
 
-  toggleThemeData() async {
-    final settings = await Hive.openBox("theme");
-    settings.put("isLightTheme", !isLightTheme);
+  Future<void> toggleThemeData() async {
+    final settings = await Hive.openBox('theme');
+    await settings.put('isLightTheme', !isLightTheme);
     isLightTheme = !isLightTheme;
     notifyListeners();
   }
