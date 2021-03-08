@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
-import 'package:news_demo/constant/constants.dart';
+import 'package:news_demo/constant/app_constants.dart';
 
 import '../states/auth_state.dart';
 import '../states/validation_state.dart';
@@ -16,12 +16,23 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final ValidationState _validator = ValidationState();
-  final AuthState _auth = AuthState();
-  final _emailKey = GlobalKey<FormState>();
-  final _passKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passController = TextEditingController();
+  late ValidationState _validator;
+  late AuthState _auth;
+  late GlobalKey<FormState> _emailKey;
+  late GlobalKey<FormState> _passKey;
+  late TextEditingController _emailController;
+  late TextEditingController _passController;
+
+  @override
+  void initState() {
+    _auth = AuthState();
+    _validator = ValidationState();
+    _emailKey = GlobalKey<FormState>();
+    _passKey = GlobalKey<FormState>();
+    _emailController = TextEditingController();
+    _passController = TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:news_demo/constant/constants.dart';
+import 'package:news_demo/constant/app_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DeveloperPage extends StatelessWidget {

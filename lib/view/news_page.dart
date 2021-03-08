@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_demo/constant/constants.dart';
+import 'package:news_demo/constant/app_constants.dart';
 import '../service/navigation_service.dart';
 import '../states/news_state.dart';
 import 'package:provider/provider.dart';

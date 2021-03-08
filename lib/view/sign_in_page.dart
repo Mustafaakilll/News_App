@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:news_demo/constant/constants.dart';
+import 'package:news_demo/constant/app_constants.dart';
 import 'package:provider/provider.dart';
 
 import '../states/auth_state.dart';

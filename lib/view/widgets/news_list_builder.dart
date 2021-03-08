@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_demo/constant/constants.dart';
+import 'package:news_demo/constant/app_constants.dart';
 
 import '../../model/news_article.dart';
 import '../../service/navigation_service.dart';
@@ -82,10 +82,11 @@ class _NewsListViewBuilderState extends State<NewsListViewBuilder> {
 
   dynamic _goNewsDetail(final context, NewsArticle news) {
     return _navigator.goToNewPage(
-        context: context,
-        newPage: NewsDetailPage(
-          url: news.url,
-          news_title: news.title!,
-        ));
+      context: context,
+      newPage: NewsDetailPage(
+        url: news.url,
+        news_title: news.title!,
+      ),
+    );
   }
 }

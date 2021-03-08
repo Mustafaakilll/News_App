@@ -35,8 +35,6 @@ class NewsDetailPage extends StatelessWidget {
       );
 
   Future<void> _share() async {
-    final title = 'Deneme';
-
-    await Share.share(title);
+    await Share.share(url);
   }
 }

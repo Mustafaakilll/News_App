@@ -8,6 +8,7 @@ import '../view/main_page.dart';
 import '../view/news_page.dart';
 import '../view/widgets/toast.dart';
 import 'navigation_service.dart';
+import '../constant/app_constants.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -33,10 +34,10 @@ class AuthService {
       _navigator.replaceNewPage(context: context, newPage: NewsPage());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        value.changeSnackbarMessage('Hata: Kullanıcı Bulunamadı');
+        value.changeSnackbarMessage(AppConstant.USER_NOT_FOUND);
         showSnackBar.showInfoToast(context: context);
       } else if (e.code == 'wrong-password') {
-        value.changeSnackbarMessage('Hata: Şifre Hatalı');
+        value.changeSnackbarMessage(AppConstant.WRONG_PASSWORD);
 
         showSnackBar.showInfoToast(context: context);
       }
@@ -87,10 +88,10 @@ class AuthService {
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        value.changeSnackbarMessage('Hata: Zayıf Parola');
+        value.changeSnackbarMessage(AppConstant.WEAK_PASSWORD);
         showSnackBar.showInfoToast(context: context);
       } else if (e.code == 'emaıl-already-ın-use') {
-        value.changeSnackbarMessage('Hata: Bu Email Kullanılmaktadır');
+        value.changeSnackbarMessage(AppConstant.INVALID_EMAIL);
         showSnackBar.showInfoToast(context: context);
       }
     } catch (er) {

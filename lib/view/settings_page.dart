@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/button_builder.dart';
-import 'package:news_demo/constant/constants.dart';
+import 'package:news_demo/constant/app_constants.dart';
 import '../service/navigation_service.dart';
 import '../states/auth_state.dart';
 import '../states/theme_state.dart';
@@ -8,7 +8,6 @@ import 'developer_info_page.dart';
 import 'main_page.dart';
 import 'package:provider/provider.dart';
 
-// ignore: must_be_immutable
 class SettingsPage extends StatelessWidget {
   final NavigationService _navigator = NavigationService();
   final AuthState _auth = AuthState();
