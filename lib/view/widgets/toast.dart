@@ -5,7 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class ShowFlutterToast {
   void showInfoToast({required BuildContext context}) {
-    final toastMessage = Provider.of<ToastMessage>(context).message;
+    final toastMessage =
+        Provider.of<ToastMessage>(context, listen: false).message;
     Fluttertoast.showToast(
       msg: toastMessage,
       backgroundColor: Colors.grey,

@@ -14,7 +14,6 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final NavigationService _navigator = NavigationService();
 
-  // ignore: missing_return
   Future<void> signInWithEmailandPassword(
       {required String email,
       required String password,

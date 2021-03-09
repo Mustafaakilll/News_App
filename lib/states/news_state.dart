@@ -21,7 +21,8 @@ class NewsState extends ChangeNotifier {
 
   Future<void> getAllRss() async {
     _isLoading = true;
-    _news.addAll(await _service.getAllNews());
+    final news = await _service.getAllNews();
+    _news.addAll(news);
     _isLoading = false;
     notifyListeners();
   }

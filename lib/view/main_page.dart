@@ -30,7 +30,7 @@ class MainPage extends StatelessWidget {
               color: Colors.blue,
               icon: Icons.person_add_alt_1,
               newPage: SignUpPage(),
-              text: AppConstant.SIGN_IN,
+              text: AppConstant.SIGN_UP,
             )
           ],
         ),
@@ -40,6 +40,7 @@ class MainPage extends StatelessWidget {
 
   AppBar get _appBar => AppBar(
         title: Text(AppConstant.WELCOME),
+        centerTitle: true,
       );
 
   Widget _buttonBuilder(

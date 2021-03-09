@@ -13,7 +13,11 @@ class ThemeState with ChangeNotifier {
   }
 
   ThemeData themeData() {
-    final theme = isLightTheme == true ? ThemeData.light() : ThemeData.dark();
+    final theme = isLightTheme == true
+        ? ThemeData.light()
+            .copyWith(appBarTheme: AppBarTheme(centerTitle: true))
+        : ThemeData.dark()
+            .copyWith(appBarTheme: AppBarTheme(centerTitle: true));
     return theme;
   }
 }

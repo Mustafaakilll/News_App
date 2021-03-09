@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 
 import '../model/news_article.dart';
@@ -10,7 +12,7 @@ class HttpService {
     final _uri = Uri.https(ApiConstants.BASE_URL, ApiConstants.TOP_HEADLINE,
         {'country': 'tr', 'apiKey': ApiConstants.API_KEY});
     final response = await _dio.getUri(_uri);
-    if (response.statusCode == 200) {
+    if (response.statusCode == HttpStatus.ok) {
       final result = response.data;
       Iterable articles = result['articles'];
       return articles.map((article) => NewsArticle.fromJson(article)).toList();
